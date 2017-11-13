@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ResponsivePopover placement="Bottom" xshowHeader="{= ${device>/system/phone} ? true : false }"
+		title="{i18n>MetadataEntityTypes} ({ui>/entityCount})">
+		<subHeader>
+			<Toolbar>
+				<SearchField liveChange="onPopupSearch"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List id="PopupEntityTypeList" mode="SingleSelectMaster" items="{ path: 'ui>/schema/entityType', sorter: [{ path: 'name' }] }"
+				selectionChange="onPopupEntityTypeSelection" updateFinished="onEntityTypeListUpdateFinished">
+				<StandardListItem title="{ui>name}" type="Active"/>
+			</List>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

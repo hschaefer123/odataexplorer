@@ -1,3 +1,27 @@
-# odataexplorer
-UI5 OData Explorer
+# ODataExplorer
 
+## [OpenUI5 Developer Blog](http://openui5.blogspot.com/2017/11/odataexplorer.html)
+
+> [UI5](http://openui5.org/) tool to explore entities of a given ODta v2 service.
+
+### [Online Demo (SAP HCP)](https://odataexplorer-p1940953245trial.dispatcher.hanatrial.ondemand.com/index.html)
+
+![Screenshot](ODataExplorer.gif)
+
+### Highlights
+
+> - app to explorer a given OData v2 service [OData v2](http://www.odata.org/documentation/odata-version-2-0/) 
+> - demo HCP destination pointing out to northwind example service [Northwind](http://services.odata.org/V2/Northwind/Northwind.svc/) 
+> - included coding to add service browser for SAP Gateways using /sap/opu/odata/iwfnd/catalogservice/
+> - some css fixes for token (avoid clipping in Tablet, float) 
+
+## SAP Service Browser
+
+If you will use the app to explorer services on an SAP Gateway, you can enable the service catalog to discover and search for all existing services.
+The selected service will be loaded automatically. To enable this feature you have to
+> - inside the manifest.json copy the xmodel/catalog model to the existing model section and delete xmodel (preload: false currently does not work, maybe a bug)  
+> - inside the Metadata.controller.js set property "_bUseCatalogService: true" to true to show service selector instead of using demo service
+
+## License
+
+Released under the [Apache license](http://www.apache.org/licenses/). Have at it.

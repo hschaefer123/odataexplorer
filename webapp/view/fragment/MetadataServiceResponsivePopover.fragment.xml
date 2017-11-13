@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ResponsivePopover placement="Bottom" xshowHeader="{= ${device>/system/phone} ? true : false }"
+		title="{i18n>Services} ({ui>/serviceCount})">
+		<subHeader>
+			<Toolbar>
+				<SearchField liveChange="onServiceSearch"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List id="PopupServiceList" mode="SingleSelectMaster" items="{ path: 'catalog>/ServiceCollection', sorter: [{ path: 'TechnicalServiceName' }], parameters: { operationMode: 'Client' } }"
+				selectionChange="onPopupServiceSelection" updateFinished="onServiceListUpdateFinished">
+				<StandardListItem title="{catalog>TechnicalServiceName}" description="{catalog>Description}" type="Active"/>
+			</List>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

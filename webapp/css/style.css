@@ -1,0 +1,8 @@
+/* Token fix */
+.fullSizeTokens .sapMTokenText {
+    max-width: none !important;
+}
+
+.fullSizeTokens .sapMToken {
+    float: left;
+}

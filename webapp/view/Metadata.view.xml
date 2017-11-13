@@ -1,0 +1,168 @@
+<mvc:View controllerName="de.blogspot.openui5.odata.explorer.controller.Metadata" height="100%" busy="{ui>busy}" xmlns:core="sap.ui.core"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m" xmlns="sap.uxap">
+	<l:DynamicSideContent id="DynamicSideContent" sideContentFallDown="BelowM" sideContentPosition="End" containerQuery="true"
+		showSideContent="{ui>/showSideContent}" breakpointChanged="onBreakpointChanged">
+		<l:mainContent>
+			<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+				<headerTitle>
+					<ObjectPageHeader id="headerForTest" objectTitle="{i18n>OData Explorer}" objectSubtitle="{ui>name}" isObjectTitleAlwaysVisible="false"
+						isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
+						<actions>
+							<m:Button visible="{ui>/useCatalogService}" icon="sap-icon://settings" tooltip="{i18n>Select Service}" type="Transparent"
+								press="onOpenFragmentPopup" data:fragmentName="./fragment/MetadataServiceResponsivePopover">
+								<m:layoutData><m:OverflowToolbarLayoutData shrinkable="false"/></m:layoutData>
+							</m:Button>
+							<m:Button icon="sap-icon://database" tooltip="{i18n>Select Entity}" type="Transparent" press="onOpenFragmentPopup"
+								data:fragmentName="./fragment/MetadataEntityListResponsivePopover">
+								<m:layoutData><m:OverflowToolbarLayoutData shrinkable="false"/></m:layoutData>
+							</m:Button>
+							<!--<m:Button icon="sap-icon://add" press="onOpenFragmentPopup" data:fragmentName="./fragment/EnterServiceUrlDialog"/> -->
+							<m:ToggleButton icon="sap-icon://cancel-share" tooltip="{i18n>Show Extensions}" pressed="{ui>/showExtensions}"/>
+							<m:ToggleButton icon="sap-icon://sap-logo-shape" tooltip="{i18n>Show SAP Annotations}" pressed="{ui>/showSapAnnotations}"/>
+							<m:Button icon="sap-icon://back-to-top" type="Transparent" tooltip="{i18n>Scroll Top}" press="onTop">
+								<m:layoutData><m:OverflowToolbarLayoutData shrinkable="false"/></m:layoutData>
+							</m:Button>
+						</actions>
+						<sideContentButton>
+							<m:Button icon="sap-icon://detail-view" type="Transparent" tooltip="{i18n>Show Entity List}" visible="false" press="onSCBtnPress"/>
+						</sideContentButton>
+					</ObjectPageHeader>
+				</headerTitle>
+				<headerContent>
+					<l:VerticalLayout>
+						<m:ObjectStatus text="{ui>/serviceUrl}"/>
+						<m:FlexBox alignItems="Center" width="100%">
+							<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://key" tooltip="Keys"/>
+							<m:Tokenizer class="fullSizeTokens" editable="false" tokens="{ path: 'ui>key/propertyRef', templateShareable: false }">
+								<m:Token text="{ui>name}" editable="false"/>
+							</m:Tokenizer>
+						</m:FlexBox>
+					</l:VerticalLayout>
+				</headerContent>
+				<sections>
+					<ObjectPageSection title="{i18n>MetadataEntityProperties}" titleUppercase="false" showTitle="false">
+						<subSections>
+							<ObjectPageSubSection>
+								<m:Table items="{ path: 'ui>property', templateShareable: false }">
+									<m:columns>
+										<m:Column>
+											<m:Text text="{i18n>Name}"/>
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" visible="{ui>/showSapAnnotations}">
+											<m:Text text="{i18n>Description}"/>
+										</m:Column>
+										<m:Column visible="{ui>/showExtensions}">
+											<m:Text text="{i18n>Extensions}"/>
+										</m:Column>
+										<m:Column hAlign="Center">
+											<m:Text text="{i18n>Type}"/>
+										</m:Column>
+										<m:Column width="5em" hAlign="End">
+											<m:Text text="Max." tooltip="{i18n>Maximum Length}"/>
+										</m:Column>
+										<m:Column width="1em" hAlign="Center">
+											<core:Icon src="sap-icon://appear-offline" tooltip="Nullable"/>
+										</m:Column>
+										<m:Column width="1em" hAlign="Center" visible="{ui>/showSapAnnotations}">
+											<core:Icon src="sap-icon://add" tooltip="Createable"/>
+										</m:Column>
+										<m:Column width="1em" hAlign="Center" visible="{ui>/showSapAnnotations}">
+											<core:Icon src="sap-icon://edit" tooltip="Updateable"/>
+										</m:Column>
+										<m:Column width="1em" hAlign="Center" visible="{ui>/showSapAnnotations}">
+											<core:Icon src="sap-icon://sort" tooltip="Sortable"/>
+										</m:Column>
+										<m:Column width="1em" hAlign="Center" visible="{ui>/showSapAnnotations}">
+											<core:Icon src="sap-icon://filter" tooltip="Filterable"/>
+										</m:Column>
+									</m:columns>
+									<m:items>
+										<m:ColumnListItem>
+											<m:cells>
+												<m:Text text="{ui>name}"/>
+												<m:ObjectStatus class="sapMTextBreakWord" text="{ui>label}"/>
+												<l:VerticalLayout
+													content="{ path: 'ui>extensions', filters: { filters: [{ path: 'name', operator: 'NE', value1: 'label' }, { path: 'name', operator: 'NE', value1: 'creatable' }, { path: 'name', operator: 'NE', value1: 'updatable' }, { path: 'name', operator: 'NE', value1: 'filterable' }, { path: 'name', operator: 'NE', value1: 'sortable' }], and: true }, templateShareable: false }">
+													<m:ObjectAttribute class="sapMTextBreakWord" title="{ui>name}" text="{ui>value}"/>
+												</l:VerticalLayout>
+												<m:Text text="{ui>type}"/>
+												<m:Text text="{ui>maxLength}"/>
+												<core:Icon src="sap-icon://appear-offline" color="red" visible="{= ${ui>nullable} === 'false' }"/>
+												<core:Icon src="sap-icon://add" color="red" visible="{= !${ui>creatable}}"/>
+												<core:Icon src="sap-icon://edit" color="red" visible="{= !${ui>updatable}}"/>
+												<core:Icon src="sap-icon://sort" color="red" visible="{= !${ui>sortable}}"/>
+												<core:Icon src="sap-icon://filter" color="red" visible="{= !${ui>filterable}}"/>
+											</m:cells>
+										</m:ColumnListItem>
+									</m:items>
+								</m:Table>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection title="{i18n>MetadataEntityNavigationProperties}" titleUppercase="false">
+						<subSections>
+							<ObjectPageSubSection>
+								<m:Table items="{ path: 'ui>navigationProperty', templateShareable: false }">
+									<m:columns>
+										<m:Column>
+											<m:Text text="{i18n>Name}"/>
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" visible="{ui>/showSapAnnotations}">
+											<m:Text text="{i18n>Description}"/>
+										</m:Column>
+										<!--
+										<m:Column>
+											<l:VerticalLayout>
+												<m:Text text="{i18n>From}"/>	
+												<m:Text text="{i18n>To}"/>
+											</l:VerticalLayout>
+										</m:Column>
+										-->
+										<m:Column>
+											<m:Text text="Target"/>
+										</m:Column>
+										<m:Column visible="{ui>/showExtensions}">
+											<m:Text text="{i18n>Extensions}"/>
+										</m:Column>
+									</m:columns>
+									<m:items>
+										<m:ColumnListItem type="Navigation" press="onNavigateToEntityType">
+											<m:cells>
+												<m:Text text="{ui>name}"/>
+												<m:ObjectStatus class="sapMTextBreakWord" text="{ui>label}"/>
+												<!--<m:Text text="{ui>fromRole} \n {ui>toRole}"/>-->
+												<m:Text text="{ui>toType}"/>
+												<l:VerticalLayout
+													content="{ path: 'ui>extensions', filters: [{ path: 'name', operator: 'NE', value1: 'label' }], templateShareable: false }">
+													<!--<m:ObjectIdentifier title="{ui>name}" text="{ui>value}"/>-->
+													<m:ObjectAttribute class="sapMTextBreakWord" title="{ui>name}" text="{ui>value}"/>
+												</l:VerticalLayout>
+											</m:cells>
+										</m:ColumnListItem>
+									</m:items>
+								</m:Table>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+		</l:mainContent>
+		<l:sideContent>
+			<m:Page title="{i18n>MetadataEntityTypes} ({ui>/entityCount})">
+				<m:headerContent>
+					<m:Button icon="sap-icon://hide" tooltip="{i18n>Hide}" type="Transparent" press="onSideContentHide"/>
+				</m:headerContent>
+				<m:subHeader>
+					<m:Toolbar>
+						<m:SearchField liveChange="onSearch"/>
+					</m:Toolbar>
+				</m:subHeader>
+				<m:List id="EntityTypeList" mode="SingleSelectMaster" items="{ path: 'ui>/schema/entityType', sorter: [{ path: 'name' }] }"
+					selectionChange="onEntityTypeSelection" updateFinished="onEntityTypeListUpdateFinished">
+					<m:StandardListItem title="{ui>name}" type="Active"/>
+				</m:List>
+			</m:Page>
+		</l:sideContent>
+	</l:DynamicSideContent>
+</mvc:View>

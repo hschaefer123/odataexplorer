@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m">
+	<Dialog title="{i18n>AddSelfActivityDetailsDialogTitle}" class="sapUiContentPadding">
+		<content>
+			<Label text="{i18n>Service Url}"/>
+			<Input value="{ui>/serviceUrl}" placeholder="{i18n>Service Url}"/>
+		</content>
+		<beginButton>
+			<Button text="{i18n>Set}" enabled="{= ${ui>/serviceUrl}.length > 0 ? true : false }" type="Emphasized" press="onSetServiceUrl"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>Cancel}" press="onClosePopup"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
