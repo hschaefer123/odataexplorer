@@ -1,6 +1,6 @@
 # ODataExplorer
 
-## [OpenUI5 Developer Blog](http://openui5.blogspot.com/2017/11/odata-explorer.html)
+## [OpenUI5 Developer Blog](http://openui5.blogspot.com/2017/12/odata-explorer.html)
 
 > [UI5](http://openui5.org/) tool to explore entities of a given OData v2 service.
 
