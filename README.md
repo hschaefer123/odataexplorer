@@ -2,7 +2,7 @@
 
 ## [OpenUI5 Developer Blog](http://openui5.blogspot.com/2017/11/odataexplorer.html)
 
-> [UI5](http://openui5.org/) tool to explore entities of a given ODta v2 service.
+> [UI5](http://openui5.org/) tool to explore entities of a given OData v2 service.
 
 ### [Online Demo (SAP HCP)](https://odataexplorer-p1940953245trial.dispatcher.hanatrial.ondemand.com/index.html)
 
@@ -10,7 +10,7 @@
 
 ### Highlights
 
-> - app to explorer a given OData v2 service [OData v2](http://www.odata.org/documentation/odata-version-2-0/) 
+> - app to explorer a given [OData v2](http://www.odata.org/documentation/odata-version-2-0/) service
 > - demo HCP destination pointing out to northwind example service [Northwind](http://services.odata.org/V2/Northwind/Northwind.svc/) 
 > - included coding to add service browser for SAP Gateways using /sap/opu/odata/iwfnd/catalogservice/
 > - some css fixes for token (avoid clipping in Tablet, float) 
