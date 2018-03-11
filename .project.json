@@ -6,8 +6,8 @@
   "build": {
     "targetFolder": "dist",
     "sourceFolder": "webapp",
-    "buildRequired": true,
-    "lastBuildDateTime": "Sun, 12 Nov 2017 16:16:58 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Sun, 11 Mar 2018 15:42:05 GMT"
   },
   "generation": [
     {
@@ -55,6 +55,6 @@
   "hcpdeploy": {
     "account": "p1940953245trial",
     "name": "odataexplorer",
-    "lastVersionWeTriedToDeploy": "1.0.1"
+    "lastVersionWeTriedToDeploy": "1.0.3"
   }
 }

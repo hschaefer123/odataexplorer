@@ -37,6 +37,17 @@
 								</Select>
 							</l:VerticalLayout>
 							<l:VerticalLayout>
+								<Label text="Node Spacing"/>
+								<Select id="nodeSpacing" selectedKey="{ui>/nodeSpacing}">
+									<core:Item key="10" text="Node spacing (10)"/>
+									<core:Item key="20" text="Node spacing (20)"/>
+									<core:Item key="40" text="Node spacing (40)"/>
+									<core:Item key="55" text="Node spacing (55)"/>
+									<core:Item key="80" text="Node spacing (80)"/>
+									<core:Item key="100" text="Node spacing (100)"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
 								<Label text="Arrow position"/>
 								<Select id="arrowPosition" selectedKey="{ui>/arrowPosition}">
 									<core:Item key="Start" text="Arrow Start"/>
@@ -57,17 +68,6 @@
 								<Select id="mergeEdges" selectedKey="{ui>/mergeEdges}">
 									<core:Item key="0" text="Split edges"/>
 									<core:Item key="1" text="Merged edges"/>
-								</Select>
-							</l:VerticalLayout>
-							<l:VerticalLayout>
-								<Label text="Node Spacing"/>
-								<Select id="nodeSpacing" selectedKey="{ui>/nodeSpacing}">
-									<core:Item key="10" text="Node spacing (10)"/>
-									<core:Item key="20" text="Node spacing (20)"/>
-									<core:Item key="40" text="Node spacing (40)"/>
-									<core:Item key="55" text="Node spacing (55)"/>
-									<core:Item key="80" text="Node spacing (80)"/>
-									<core:Item key="100" text="Node spacing (100)"/>
 								</Select>
 							</l:VerticalLayout>
 						</items>
