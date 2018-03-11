@@ -14,6 +14,7 @@
 > - demo HCP destination pointing out to northwind example service [Northwind](http://services.odata.org/V2/Northwind/Northwind.svc/) 
 > - included coding to add service browser for SAP Gateways using /sap/opu/odata/iwfnd/catalogservice/
 > - some css fixes for token (avoid clipping in Tablet, float) 
+> - added Visualizer to render networkgraph with options to export to SVG and PNG 
 
 ## SAP Service Browser
 
