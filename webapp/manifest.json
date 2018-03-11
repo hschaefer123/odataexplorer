@@ -54,7 +54,9 @@
 				"sap.m": {},
 				"sap.ui.core": {},
 				"sap.ui.layout": {},
-				"sap.uxap": {}
+				"sap.uxap": {},
+				"sap.f": {},
+				"sap.suite.ui.commons": {}
 			}
 		},
 		"contentDensities": {
@@ -100,6 +102,11 @@
 					"viewName": "Metadata",
 					"viewId": "metadata",
 					"viewLevel": 1
+				},
+				"visualizer": {
+					"viewName": "MetadataVis",
+					"viewId": "visualizer",
+					"viewLevel": 2
 				}
 			}
 		},

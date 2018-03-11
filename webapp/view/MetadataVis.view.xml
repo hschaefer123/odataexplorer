@@ -1,0 +1,108 @@
+<mvc:View controllerName="de.blogspot.openui5.odata.explorer.controller.MetadataVis" height="100%" busy="{ui>/busy}"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f" xmlns:l="sap.ui.layout" xmlns:graph="sap.suite.ui.commons.networkgraph"
+	xmlns:layout="sap.suite.ui.commons.networkgraph.layout" xmlns="sap.m">
+	<f:DynamicPage id="dynamicPageId" class="sapUiNoContentPadding" fitContent="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="OData Visualizer"/>
+				</f:heading>
+				<f:actions>
+					<Button icon="sap-icon://explorer" text="Explorer" type="Transparent" press="onDisplay"/>
+					<Button icon="sap-icon://download" text="SVG" type="Transparent" press="onExportSvg"/>
+					<Button icon="sap-icon://download" text="PNG" type="Transparent" press="onExportPng"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<items>
+							<l:VerticalLayout>
+								<Label text="Orientation"/>
+								<Select id="orientation" selectedKey="{ui>/orientation}">
+									<core:Item key="LeftRight" text="Left-Right"/>
+									<core:Item key="RightLeft" text="Right-Left"/>
+									<core:Item key="TopBottom" text="Top-Bottom"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<Label text="Node placement"/>
+								<Select id="nodePlacement" selectedKey="{ui>/nodePlacement}">
+									<core:Item key="BrandesKoepf" text="Brandes-Koepf"/>
+									<core:Item key="LinearSegments" text="Linear Segments"/>
+									<core:Item key="Simple" text="Simple"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<Label text="Arrow position"/>
+								<Select id="arrowPosition" selectedKey="{ui>/arrowPosition}">
+									<core:Item key="Start" text="Arrow Start"/>
+									<core:Item key="Middle" text="Arrow Middle"/>
+									<core:Item key="End" text="Arrow End"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<Label text="Arrow orientation"/>
+								<Select id="arrowOrientation" selectedKey="{ui>/arrowOrientation}">
+									<core:Item key="ParentOf" text="Parent -> Child"/>
+									<core:Item key="ChildOf" text="Child -> Parent"/>
+									<core:Item key="None" text="Hidden"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<Label text="Merge Edges"/>
+								<Select id="mergeEdges" selectedKey="{ui>/mergeEdges}">
+									<core:Item key="0" text="Split edges"/>
+									<core:Item key="1" text="Merged edges"/>
+								</Select>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<Label text="Node Spacing"/>
+								<Select id="nodeSpacing" selectedKey="{ui>/nodeSpacing}">
+									<core:Item key="10" text="Node spacing (10)"/>
+									<core:Item key="20" text="Node spacing (20)"/>
+									<core:Item key="40" text="Node spacing (40)"/>
+									<core:Item key="55" text="Node spacing (55)"/>
+									<core:Item key="80" text="Node spacing (80)"/>
+									<core:Item key="100" text="Node spacing (100)"/>
+								</Select>
+							</l:VerticalLayout>
+						</items>
+					</FlexBox>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<FlexBox id="graphWrapper" fitContainer="true" renderType="Bare" wrap="Wrap">
+				<graph:Graph id="graph" orientation="{ui>/orientation}" nodes="{/nodes}" lines="{/lines}">
+					<graph:layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="1" baseSize="0%" minWidth="340px"/>
+					</graph:layoutData>
+					<graph:layoutAlgorithm>
+						<layout:LayeredLayout nodePlacement="{ui>/nodePlacement}" nodeSpacing="{ path: 'ui>/nodeSpacing', formatter: '.formatIntValue' }"
+							mergeEdges="{ path: 'ui>/mergeEdges', formatter: '.formatBoolValue' }"/>
+					</graph:layoutAlgorithm>
+					<graph:nodes>
+						<graph:Node maxWidth="420" key="{key}" icon="{icon}" shape="{shape}" status="{status}" title="{title}" titleLineSize="1"
+							description="{description}" descriptionLineSize="2" attributes="{path:'attributes', templateShareable:true}">
+							<graph:attributes>
+								<graph:ElementAttribute label="{label}" value="{value}"/>
+							</graph:attributes>
+						</graph:Node>
+					</graph:nodes>
+					<graph:lines>
+						<graph:Line arrowPosition="{ui>/arrowPosition}" arrowOrientation="{ui>/arrowOrientation}" from="{from}" to="{to}" status="{status}"></graph:Line>
+					</graph:lines>
+				</graph:Graph>
+				<graph:GraphMap id="map" graph="graph">
+					<graph:layoutData>
+						<FlexItemData minWidth="200px" maxWidth="20%"/>
+					</graph:layoutData>
+				</graph:GraphMap>
+			</FlexBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

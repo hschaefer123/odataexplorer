@@ -20,6 +20,7 @@
 							<!--<m:Button icon="sap-icon://add" press="onOpenFragmentPopup" data:fragmentName="./fragment/EnterServiceUrlDialog"/> -->
 							<m:ToggleButton icon="sap-icon://cancel-share" tooltip="{i18n>Show Extensions}" pressed="{ui>/showExtensions}"/>
 							<m:ToggleButton icon="sap-icon://sap-logo-shape" tooltip="{i18n>Show SAP Annotations}" pressed="{ui>/showSapAnnotations}"/>
+							<m:Button icon="sap-icon://overview-chart" type="Transparent" tooltip="Visualizer" press="onDisplayVis"/>
 							<m:Button icon="sap-icon://back-to-top" type="Transparent" tooltip="{i18n>Scroll Top}" press="onTop">
 								<m:layoutData><m:OverflowToolbarLayoutData shrinkable="false"/></m:layoutData>
 							</m:Button>

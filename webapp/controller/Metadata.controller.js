@@ -61,6 +61,10 @@ sap.ui.define([
 		/* =========================================================== */
 		/* event handler                                               */
 		/* =========================================================== */
+		
+		onDisplayVis: function() {
+			this.display("visualizer");
+		},
 
 		onBreakpointChanged: function(oEvent) {
 			var sCurrentBreakpoint = oEvent.getParameter("currentBreakpoint");
@@ -92,7 +96,7 @@ sap.ui.define([
 				//oList.detachUpdateFinished(this.onEntityTypeListUpdateFinished, this);
 			}
 		},
-
+		
 		onSetServiceUrl: function(oEvent) {
 			var sServiceUrl = this._oViewModel.getProperty("/serviceUrl");
 
@@ -270,7 +274,9 @@ sap.ui.define([
 				this._oViewModel.setProperty("/busy", false);
 			}.bind(this));
 			this.setModel(this._oODataModel);
-
+			
+			sap.ui.getCore().setModel(this._oODataModel, "odata");
+			
 			// handle metadata error
 			this._oODataModel.attachMetadataFailed(function(oEvent) {
 				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;

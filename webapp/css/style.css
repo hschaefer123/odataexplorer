@@ -6,3 +6,8 @@
 .fullSizeTokens .sapMToken {
     float: left;
 }
+
+.sapFDynamicPageContent,
+.sapFDynamicPageContentFitContainer {
+    padding: 2rem 0 0 0;
+}
