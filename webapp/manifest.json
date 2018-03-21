@@ -68,7 +68,7 @@
 				"dataSource": "catalogService",
 				"settings": {
 					"defaultCountMode": "Inline",
-					"useBatch": true
+					"useBatch": false
 				},
 				"preload": true
 			}

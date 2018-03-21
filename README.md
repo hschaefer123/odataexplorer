@@ -22,6 +22,7 @@ If you will use the app to explorer services on an SAP Gateway, you can enable t
 The selected service will be loaded automatically. To enable this feature you have to
 > - inside the manifest.json copy the xmodel/catalog model to the existing model section and delete xmodel (preload: false currently does not work, maybe a bug)  
 > - inside the Metadata.controller.js set property "_bUseCatalogService: true" to true to show service selector instead of using demo service
+> - FIX: I also changed useBatch: false like mentioned by Gregor's issue [#1](https://github.com/hschaefer123/odataexplorer/issues/1)
 
 ## License
 
