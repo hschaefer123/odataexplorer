@@ -23,7 +23,7 @@ The selected service will be loaded automatically. To enable this feature you ha
 > - inside the manifest.json copy the xmodel/catalog model to the existing model section and delete xmodel (preload: false currently does not work, maybe a bug)  
 > - inside the Metadata.controller.js set property "_bUseCatalogService: true" to true to show service selector instead of using demo service
 > - FIX: I also changed useBatch: false like mentioned by Gregor's issue [#1](https://github.com/hschaefer123/odataexplorer/issues/1)
-> - remove line ```"authenticationMethod": "none",``` and block ```"securityConstraints": [...],``` from ```neo-app.json```. This is used for demo purposes only to make to app anonymous available!
+> - remove line ```"authenticationMethod": "none",``` and block ```"securityConstraints": [...],``` from ```neo-app.json```. This is used for demo purposes only to make to the public/anonymous available!
 
 ## License
 
