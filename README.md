@@ -6,7 +6,7 @@
 
 ### [Online Demo (SAP HCP)](https://odataexplorer-p1940953245trial.dispatcher.hanatrial.ondemand.com/index.html)
 
-![Screenshot](ODataExplorer.gif)
+![Screenshot](./ODataExplorer.gif)
 
 ### Highlights
 
